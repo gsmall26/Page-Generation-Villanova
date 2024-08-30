@@ -33,8 +33,27 @@
         overflow: hidden;
     }
     .circle-image {
+        position: relative;
         max-width: 100%;
         max-height: 100%;
+        object-fit: cover;
+    }
+    .qr {
+        width: 75px;
+        height: 75px;
+    }
+    .additional-info {
+        position: fixed;
+        top: 25px;
+        right: 100px;
+    }
+    .extra-additional-info {
+        text-align: center;
+    }
+    .wildcat-image {
+        position: relative;
+        max-width: 250px;
+        max-height: 250px;
         object-fit: cover;
     }
 </style>
@@ -42,11 +61,74 @@
 <body>
     <div class="container">
         <div class="background-content">
-            <h1>Welcome to Villanova University!</h1>
-            <img src="/villanovachurch.png" alt="Villanova Church" width="400">
+            <!-- <h1>Welcome to Villanova University!</h1>
+            <img src="/villanovachurch.png" alt="Villanova Church" width="400"> -->
+            <h2>Scan below to look at our website!</h2>
+            <img class="qr" src="/QR to csc.png">
+            <h3>Undergraduate Programs</h3>
+            <ul>
+                <li><b>B.S. in Computer Science</b></li>
+                <ul>
+                    <li>Required Major Courses (73 credits)</li>
+                    <li>Core Curriculum Requirements (33 credits) </li>
+                    <li>Free Elective Requirement (16 credits) </li>
+                </ul>
+            </ul>
+            <h3>Graduate Programs</h3>
+            <ul>
+                <li><b>M.S. in Computer Science</b></li>
+                <ul>
+                    <li>The MSCS program trains students to become experts in applied and basic computing.
+                    <br>It offers courses in computer systems, theory, languages, and algorithms.</li>
+                    <li>There are 5 required courses: 
+                        <ul>
+                            <li>CSC 8000: Foundations of Algorithms and Data Structures</li>
+                            <li>CSC 8301: Design and Analysis of Algorithms</li>
+                            <li>CSC 8310: Linguistics of Programming Languages</li>
+                            <li>CSC 8400: Computer Systems</li>
+                            <li>CSC 8510: Theory of Computability</li>
+                        </ul>
+                        <li>There are five elective courses approved for the MS in Computer Science degree.</li>
+                    </li>
+                </ul>
+                <br>
+                <li><b>M.S. in Software Engineering</b></li>
+                <ul>
+                    <li>The MSSE degree program provides the practical knowledge and experience needed to <br>specify, design, develop and maintain today's software systems.</li>
+                    <li>There are 6 required courses:
+                        <ul>
+                            <li>CSC 8000: Foundations of Algorithms and Data Structures</li>
+                            <li>CSC 8400: Computer Systems</li>
+                            <li>CSC 8490: Database Systems</li>
+                            <li>CSC 8540: Software Engineering</li>
+                            <li>CSC 8541: Requirements Engineering</li>
+                            <li>CSC 8542: Software Design and Evolution</li>
+                        </ul>
+                        <li>There are four elective courses approved for the MS in Computer Science degree.</li>
+
+                    </li>
+                </ul>
+            </ul>
+            <!-- <ul>
+                <li>6,700 Full Time Undergraduate Students</li>
+                <li>3,100 Graduate and Law Students</li>
+                <li>Over 300+ student organizations</li>
+                <li> 135,000 alumni worldwide</li>
+                <li>Average undergraduate starting salary of $71,000</li>
+            </ul> -->
         </div>
         <div class="circle-container">
             <img class="circle-image" src="cropped_face.jpg" alt="Cropped Face">
+        </div>
+        <div>
+            <img class="wildcat-image" src="/wildcat.jpg" alt="Wil D Cat">
+        </div>
+        <div class="additional-info">
+            <h3 class="extra-additional-info">Internship Opportunities</h3>
+            <p>The Department of Computing Sciences places interns within several offices in the Vatican<br> including the Vatican Museums, the Directorate for Telecommunication and the Dicastery <br> for Communication. Projects vary and might include development of the Vatican website,<br> security, online registration, compatibility modifications, network modeling and virtual<br> reality projects. We also place interns with the Augustinians in their Rome Office.</p>
+            <!-- The Department of Computing Sciences places interns within several offices in the Vatican including the Vatican Museums, the Directorate for Telecommunication and the Dicastery for Communication. Projects vary and might include development of the Vatican website, security, online registration, compatibility modifications, network modeling and virtual reality projects. We also place interns with the Augustinians in their Rome Office. -->
+
+
         </div>
     </div>
 </body>
