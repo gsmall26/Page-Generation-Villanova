@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villanova</title>
+    <style>
+        
+    body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Background color */
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align items to the bottom */
+    height: 100vh;
+    position: relative; /* Allows absolute positioning of child elements */
+    padding: 20px;
+    background: url('/static/images/villanovachurch.png') no-repeat center center; /* Background image */
+    background-size: cover;
+}
+.welcome-tag {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #003b6f; /* Villanova Blue */
+    color: #ffffff; /* White text */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.photo-container {
+    position: relative;
+    width: 200px; /* Adjust size as needed */
+}
+.body-image {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    display: block; /* Ensures the image is not affected by other inline elements */
+    background-color: transparent; /* Ensure the background is transparent */
+    mix-blend-mode: multiply; /* Blends the white background with the container background */
+}
+.circle-image {
+    position: absolute;
+    top: -70px; /* Adjust based on where the face should align */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    /*border: 5px solid #fff; - Optional: Border around face */
+    z-index: 10; /* Ensure the face is on top */
+} 
+.mascot {
+    position: absolute;
+    top: 80%;
+    right: 28%; /* Adjust spacing from right */
+    transform: translateY(-50%);
+    max-width: 300px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 10px;
+}  
+    </style>
+</head>
+<body>
+    <div class="welcome-tag">Welcome to Villanova!</div>
+    <div class="container">
+        <div class="photo-container">
+            <img class="body-image" src="/static/images/person_body.jpg" alt="Body Image">
+            {% if latest_cropped_face %}
+                <img class="circle-image" src="{{ url_for('faces', filename=latest_cropped_face) }}" alt="Cropped Face">
+            {% else %}
+                <p>No cropped face image available.</p>
+            {% endif %}
+        </div>
+        <img class="mascot" src="/static/images/edited_wildcat.png" alt="Villanova Wildcat Mascot">
+    </div>
+</body>
+</html>
