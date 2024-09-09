@@ -1,6 +1,18 @@
 import cv2
+#import time
+import os
 
 cap = cv2.VideoCapture(0)  #VideoCapture object to access camera, 0 for default
+
+faces_folder = "faces"
+
+#make sure "faces" folder exists
+if not os.path.exists(faces_folder):
+    os.makedirs(faces_folder)
+
+# Get the current image count by checking the number of images in the faces folder
+existing_images = [f for f in os.listdir(faces_folder) if f.startswith('cropped_face') and f.endswith('.jpg')]
+image_count = len(existing_images)
 
 while True:
     ret, frame = cap.read() #ret is boolean about success, frame is actual data
@@ -10,11 +22,11 @@ while True:
 
     key = cv2.waitKey(1)
     if key == ord('s'):
+        
+        full_image_filename = f'captured_image_{image_count}.jpg'
+        #cv2.imwrite(full_image_filename, frame)  <- if i want to save the raw image to the directory
 
-        cv2.imwrite('captured_image.jpg', frame) #save capture as captured_image.jpg in current directory
-        img = cv2.imread('captured_image.jpg') #stores image in variable
-
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #grayscale
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #grayscale
 
         # Load the pre-trained Haar Cascade face detection model
         face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -27,11 +39,14 @@ while True:
         # If a face is detected, crop and save the first detected face
         if len(faces) > 0:
             (x, y, w, h) = faces[0] #get coordinates of the rectangle that encloses the detected face. (x, y) top left corner. (w,h) width and height
-            cropped_face = img[y:y + h, x:x + w] #extracts ROI from initial image with color
-            cv2.imwrite('cropped_face.jpg', cropped_face)
-            print('Face cropped and saved as cropped_face.jpg')
+            cropped_face = frame[y:y + h, x:x + w] #extracts ROI from initial image with color
+            cropped_face_filename = os.path.join(faces_folder, f'cropped_face_{image_count}.jpg')
+            cv2.imwrite(cropped_face_filename, cropped_face)
+            print(f'Face cropped and saved as {cropped_face_filename}')
         else:
             print('No faces detected.')
+        
+        image_count += 1
 
         break
 
