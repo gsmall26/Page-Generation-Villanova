@@ -19,11 +19,15 @@ def get_latest_cropped_face():
 @app.route('/')
 def index():
     latest_cropped_face = get_latest_cropped_face()
+    print(latest_cropped_face)
     return render_template('workingpage.html', latest_cropped_face=latest_cropped_face)
 
 @app.route('/faces/<filename>')
 def faces(filename):
     return send_from_directory(FACES_FOLDER, filename)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0")

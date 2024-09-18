@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villanova</title>
+    <style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for all images and positioning */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Background width */
+    height: 600px; /* Fixed height to maintain aspect ratio */
+    background: url('/static/images/mendel_image.jpg') no-repeat center center;
+    background-size: cover;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align content at the bottom */
+}
+
+/* Welcome Tag */
+.welcome-tag {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #003b6f;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 20; /* Ensure it appears on top */
+}
+
+/* Styling for Body Image and Circle Image */
+.photo-container {
+    position: relative;
+    width: 200px; /* Fixed width */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px; /* Space between the person and mascot */
+}
+
+.body-image {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    display: block; /* Ensures the image is not affected by other inline elements */
+    background-color: transparent; /* Ensure the background is transparent */
+    mix-blend-mode: multiply; /* Blends the white background with the container background */
+}
+
+.circle-image {
+    position: absolute;
+    bottom: 160px; /* Adjust to align the head slightly higher */
+    width: 100px; /* Fixed size */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 10; /* Ensure the face image appears on top */
+}
+
+.mascot {
+    width: 250px; /* Fixed size */
+    height: auto;
+    border-radius: 10px;
+    z-index: 10; /* Ensure the mascot appears on top */
+}
+
+/* Optional: Scaling images for smaller screens */
+@media (max-width: 600px) {
+    .photo-container {
+        width: 150px; /* Adjust size */
+    }
+
+    .circle-image {
+        width: 80px; /* Adjust size */
+        height: 80px; /* Adjust size */
+    }
+
+    .mascot {
+        width: 120px; /* Adjust size */
+    }
+
+    .welcome-tag {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-tag">Welcome to Villanova!</div>
+
+        <div class="container">
+            <div class="welcome-tag">Welcome to Villanova!</div>
+    
+            <div class="photo-container">
+                <img class="body-image" src="/static/images/person_body.jpg" alt="Body Image">
+                <img class="circle-image" src="../faces/cropped_face_8.jpg" alt="Cropped Face">
+            </div>
+    
+            <img class="mascot" src="/static/images/edited_wildcat.png" alt="Villanova Wildcat Mascot">
+        </div>
+
+        <!-- <div class="photo-container">
+            <img class="body-image" src="/static/images/person_body.jpg" alt="Body Image">
+            {% if latest_cropped_face %}
+                <img class="circle-image" src="{{ url_for('faces', filename=latest_cropped_face) }}" alt="Cropped Face">
+            {% else %}
+                <p>No cropped face image available.</p>
+            {% endif %}
+        </div> -->
+
+</body>
+</html>
