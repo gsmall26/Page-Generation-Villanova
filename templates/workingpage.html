@@ -6,67 +6,111 @@
     <title>Villanova</title>
     <style>
         
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Background color */
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
+
+/* Container for all images and positioning */
 .container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    background: url('/static/images/mendel_image.jpg') no-repeat center center;
+    background-size: cover;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Align items to the bottom */
-    height: 100vh;
-    position: relative; /* Allows absolute positioning of child elements */
-    padding: 20px;
-    background: url('/static/images/mendel_image.jpg') no-repeat center center; /* Background image */
-    background-size: cover;
+    align-items: flex-end; /*center; */
 }
+
+/* Welcome Tag */
 .welcome-tag {
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #003b6f; /* Villanova Blue */
-    color: #ffffff; /* White text */
+    background-color: #003b6f;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
+    z-index: 20; /* Ensure it appears on top */
 }
+
+/* Styling for Body Image and Circle Image */
 .photo-container {
     position: relative;
-    width: 200px; /* Adjust size as needed */
+    width: 200px; 
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: -25px; /* 20 to 10 */
 }
+
 .body-image {
     width: 200px; /* Adjust size as needed */
     height: auto;
     display: block; /* Ensures the image is not affected by other inline elements */
     background-color: transparent; /* Ensure the background is transparent */
     mix-blend-mode: multiply; /* Blends the white background with the container background */
+
+    position: relative; /* Allows element to be shifted relative to its normal position */
+    transform: translate(20px, 15px); /* X-axis (left/right), Y-axis (up/down) */
 }
+
 .circle-image {
     position: absolute;
-    top: -70px; /* Adjust based on where the face should align */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
+    bottom: 160px; /* Adjust to align the head slightly higher */
+    width: 90px; /* Fixed size */
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    /*border: 5px solid #fff; - Optional: Border around face */
-    z-index: 10; /* Ensure the face is on top */
-} 
+    z-index: 10; /* Ensure the face image appears on top */
+    
+    transform: translate(18px, 18px);
+    /* X-axis (left/right), Y-axis (up/down) */
+}
+
 .mascot {
-    position: absolute;
-    top: 80%;
-    right: 28%; /* Adjust spacing from right */
-    transform: translateY(-50%);
-    max-width: 300px; /* Adjust size as needed */
+    width: 250px; /* Fixed size */
     height: auto;
     border-radius: 10px;
-}  
+    z-index: 10; /* Ensure the mascot appears on top */
+}
+
+/* Optional: Scaling images for smaller screens */
+@media (max-width: 600px) {
+    .photo-container {
+        width: 150px; /* Adjust size */
+    }
+
+    .circle-image {
+        width: 80px; /* Adjust size */
+        height: 80px; /* Adjust size */
+    }
+
+    .mascot {
+        width: 120px; /* Adjust size */
+    }
+
+    .welcome-tag {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+}
     </style>
 </head>
 <body>

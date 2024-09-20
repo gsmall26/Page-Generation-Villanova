@@ -22,14 +22,14 @@ body {
 .container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Background width */
-    height: 600px; /* Fixed height to maintain aspect ratio */
+    max-width: 800px;
+    height: 600px;
     background: url('/static/images/mendel_image.jpg') no-repeat center center;
     background-size: cover;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Align content at the bottom */
+    align-items: flex-end; /*center; */
 }
 
 /* Welcome Tag */
@@ -51,12 +51,12 @@ body {
 /* Styling for Body Image and Circle Image */
 .photo-container {
     position: relative;
-    width: 200px; /* Fixed width */
+    width: 200px; 
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px; /* Space between the person and mascot */
+    margin-right: -25px; /* 20 to 10 */
 }
 
 .body-image {
@@ -65,16 +65,22 @@ body {
     display: block; /* Ensures the image is not affected by other inline elements */
     background-color: transparent; /* Ensure the background is transparent */
     mix-blend-mode: multiply; /* Blends the white background with the container background */
+
+    position: relative; /* Allows element to be shifted relative to its normal position */
+    transform: translate(20px, 15px); /* X-axis (left/right), Y-axis (up/down) */
 }
 
 .circle-image {
     position: absolute;
     bottom: 160px; /* Adjust to align the head slightly higher */
-    width: 100px; /* Fixed size */
-    height: 100px;
+    width: 90px; /* Fixed size */
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
     z-index: 10; /* Ensure the face image appears on top */
+    
+    transform: translate(18px, 18px);
+    /* X-axis (left/right), Y-axis (up/down) */
 }
 
 .mascot {
