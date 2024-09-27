@@ -126,21 +126,18 @@ body {
 
         <script>
             // Assuming 'latest_cropped_face' is made available through a script tag
-    //        const latestCroppedFace = "{{ latest_cropped_face }}"; // pass this from your Flask app
-            const latestCroppedFace = "{{ latest_cropped_face | tojson }}";
-
+            const latestCroppedFace = "{{ latest_cropped_face }}"; // pass this from your Flask app
         
             const croppedFaceContainer = document.getElementById('croppedFaceContainer');
         
             if (latestCroppedFace) {
                 const img = document.createElement('img');
                 img.className = 'circle-image';
-                img.src = `/faces/${latestCroppedFace}`;
+                img.src = `faces/${latestCroppedFace}`;
                 img.alt = 'Cropped Face';
                 croppedFaceContainer.appendChild(img);
             } else {
                 console.log('we hit the else path');
-
 
                 const p = document.createElement('p');
                 p.textContent = 'No cropped face image available.';
