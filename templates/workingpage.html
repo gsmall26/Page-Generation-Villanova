@@ -25,7 +25,7 @@ body {
     width: 100%;
     max-width: 800px;
     height: 600px;
-    background: url('/George/Face_Recognition/Page-Generation-Villanova/static/images/mendel_image.jpg') no-repeat center center;
+    background: url('/static/images/mendel_image.jpg') no-repeat center center;
     background-size: cover;
     margin: 0 auto;
     display: flex;
@@ -118,11 +118,11 @@ body {
         <div class="welcome-tag">Welcome to Villanova!</div>
 
         <div class="photo-container">
-            <img class="body-image" src="/George/Face_Recognition/Page-Generation-Villanova/static/images/person_body.jpg" alt="Body Image">
+            <img class="body-image" src="/static/images/person_body.jpg" alt="Body Image">
             <div id="croppedFaceContainer"></div>
         </div>
 
-        <img class="mascot" src="/George/Face_Recognition/Page-Generation-Villanova/static/images/edited_wildcat.png" alt="Villanova Wildcat Mascot">
+        <img class="mascot" src="/static/images/edited_wildcat.png" alt="Villanova Wildcat Mascot">
 
         <script>
             // Assuming 'latest_cropped_face' is made available through a script tag
@@ -133,7 +133,7 @@ body {
             if (latestCroppedFace) {
                 const img = document.createElement('img');
                 img.className = 'circle-image';
-                img.src = `faces/${latestCroppedFace}`;
+                img.src = `/api/faces/${latestCroppedFace}`;
                 img.alt = 'Cropped Face';
                 croppedFaceContainer.appendChild(img);
             } else {
