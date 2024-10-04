@@ -80,7 +80,7 @@ body {
     object-fit: cover;
     z-index: 10; /* Ensure the face image appears on top */
     
-    transform: translate(18px, 18px);
+    transform: translate(12px, 18px);
     /* X-axis (left/right), Y-axis (up/down) */
 }
 
@@ -123,28 +123,6 @@ body {
         </div>
 
         <img class="mascot" src="/static/images/edited_wildcat.png" alt="Villanova Wildcat Mascot">
-
-        <!-- <script>
-            // Assuming 'latest_cropped_face' is made available through a script tag
-            const latestCroppedFace = "{{ latest_cropped_face }}"; // pass this from your Flask app
-        
-            const croppedFaceContainer = document.getElementById('croppedFaceContainer');
-        
-            if (latestCroppedFace) {
-                const img = document.createElement('img');
-                img.className = 'circle-image';
-                //img.src = `/api/faces/${latestCroppedFace}`;
-                img.src = `http://153.104.200.222:8000/api/faces/${latestCroppedFace}`;
-                img.alt = 'Cropped Face';
-                croppedFaceContainer.appendChild(img);
-            } else {
-                console.log('we hit the else path');
-
-                const p = document.createElement('p');
-                p.textContent = 'No cropped face image available.';
-                croppedFaceContainer.appendChild(p);
-            }
-        </script> -->
 
         <script>
             // Fetch the latest cropped face from your API
