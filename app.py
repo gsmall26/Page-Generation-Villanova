@@ -1,10 +1,12 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, jsonify
 import os
+from camera import crop_face
 
 app = Flask(__name__)
 
 # Path to the folder containing the images
 FACES_FOLDER = 'faces'
+app.config['UPLOAD_FOLDER'] = FACES_FOLDER
 
 def get_latest_cropped_face():
     # List all files in the faces folder
@@ -26,8 +28,33 @@ def index():
 def faces(filename):
     return send_from_directory(FACES_FOLDER, filename)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+
+#IMAGE UPLOADS
+@app.route('/api/upload', methods=['POST'])
+def upload_image():
+
+    if 'image' not in request.files:
+        return jsonify({"error": "No image provided"}), 400
+    
+    image = request.files['image']
+    
+    if image.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    
+    image_filename = f"uploaded_image_{len(os.listdir(FACES_FOLDER)) + 1}.jpg"
+    image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_filename)
+    image.save(image_path)
+    
+    # Crop the face using the crop_face() function from camera.py
+    cropped_image_filename = f"cropped_face_{len(os.listdir(FACES_FOLDER)) + 1}.jpg"
+    cropped_image_path = os.path.join(app.config['UPLOAD_FOLDER'], cropped_image_filename)
+    
+    if crop_face(image_path, cropped_image_path):  # Crop the image and save it
+        return jsonify({"message": "Image uploaded and cropped successfully", "filename": cropped_image_filename}), 200
+    else:
+        return jsonify({"error": "No face detected in the image"}), 400
 
 if __name__ == "__main__":
+    if not os.path.exists(FACES_FOLDER):
+        os.makedirs(FACES_FOLDER)
     app.run(debug=True, host="0.0.0.0")

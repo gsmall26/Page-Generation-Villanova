@@ -133,7 +133,8 @@ body {
             if (latestCroppedFace) {
                 const img = document.createElement('img');
                 img.className = 'circle-image';
-                img.src = `/api/faces/${latestCroppedFace}`;
+                //img.src = `/api/faces/${latestCroppedFace}`;
+                img.src = `http://153.104.200.222:8000/api/faces/${latestCroppedFace}`;
                 img.alt = 'Cropped Face';
                 croppedFaceContainer.appendChild(img);
             } else {
