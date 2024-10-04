@@ -145,6 +145,37 @@ body {
                 croppedFaceContainer.appendChild(p);
             }
         </script>
+
+        <!-- <script>
+            // Fetch the latest cropped face from your API
+            fetch('http://153.104.200.222:8000/api/faces/latest') // Update this endpoint to fetch the latest cropped face
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const latestCroppedFace = data.latest_cropped_face; // Adjust based on your actual response structure
+                    
+                    const croppedFaceContainer = document.getElementById('croppedFaceContainer');
+                    
+                    if (latestCroppedFace) {
+                        const img = document.createElement('img');
+                        img.className = 'circle-image';
+                        img.src = `http://153.104.200.222:8000/api/faces/${latestCroppedFace}`; // Set the image source
+                        img.alt = 'Cropped Face';
+                        croppedFaceContainer.appendChild(img);
+                    } else {
+                        const p = document.createElement('p');
+                        p.textContent = 'No cropped face image available.';
+                        croppedFaceContainer.appendChild(p);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching the latest cropped face:', error);
+                });
+        </script> -->
     </div>
 </body>
 </html>
