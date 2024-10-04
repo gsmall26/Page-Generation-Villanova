@@ -124,7 +124,7 @@ body {
 
         <img class="mascot" src="/static/images/edited_wildcat.png" alt="Villanova Wildcat Mascot">
 
-        <script>
+        <!-- <script>
             // Assuming 'latest_cropped_face' is made available through a script tag
             const latestCroppedFace = "{{ latest_cropped_face }}"; // pass this from your Flask app
         
@@ -144,9 +144,9 @@ body {
                 p.textContent = 'No cropped face image available.';
                 croppedFaceContainer.appendChild(p);
             }
-        </script>
+        </script> -->
 
-        <!-- <script>
+        <script>
             // Fetch the latest cropped face from your API
             fetch('http://153.104.200.222:8000/api/faces/latest') // Update this endpoint to fetch the latest cropped face
                 .then(response => {
@@ -175,7 +175,7 @@ body {
                 .catch(error => {
                     console.error('Error fetching the latest cropped face:', error);
                 });
-        </script> -->
+        </script>
     </div>
 </body>
 </html>
