@@ -33,6 +33,10 @@ def latest_cropped_face_api():
 def faces(filename):
     return send_from_directory(FACES_FOLDER, filename)
 
+@app.route('/upload', methods=['GET'])
+def upload_form():
+    return render_template('upload_form.html')
+    
 # IMAGE UPLOADS
 @app.route('/api/upload', methods=['POST'])
 def upload_image():
