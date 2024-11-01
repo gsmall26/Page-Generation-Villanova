@@ -36,7 +36,7 @@ def faces(filename):
 @app.route('/upload', methods=['GET'])
 def upload_form():
     return render_template('upload_form.html')
-    
+
 # IMAGE UPLOADS
 @app.route('/api/upload', methods=['POST'])
 def upload_image():
@@ -48,7 +48,7 @@ def upload_image():
     if image.filename == '':
         return jsonify({"error": "No selected file"}), 400
     
-    image_filename = f"uploaded_image_{len(os.listdir(FACES_FOLDER)) + 1}.jpg"
+    image_filename = f"cropped_face_{len(os.listdir(FACES_FOLDER)) + 1}.jpg"
     image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_filename)
     image.save(image_path)
     
